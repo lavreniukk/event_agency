@@ -1,0 +1,47 @@
+﻿<Window x:Class="EventAgency.Views.AddEvent"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EventAgency.Views"
+        mc:Ignorable="d"
+        Title="AddEvent" Height="1080" Width="1920">
+    <Grid>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="48" Text="Add new event" Margin="0,100,0,0"/>
+        <Grid HorizontalAlignment="Left" Margin="343,45,0,45">
+            <Label Content="Event Name" HorizontalAlignment="Left" Margin="0,215,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="EventNameField" HorizontalAlignment="Left" FontSize="24" Margin="0,240,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220" TextChanged="EventNameField_TextChanged"/>
+            <Label Content="Event Type" HorizontalAlignment="Left" Margin="238,215,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="EventTypeField" HorizontalAlignment="Left" FontSize="24" Margin="238,240,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220" TextChanged="EventTypeField_TextChanged"/>
+            <Label Content="Event Time" HorizontalAlignment="Left" Margin="0,289,0,0" VerticalAlignment="Top"/>
+            <DatePicker x:Name="EventTimeField" HorizontalAlignment="Left" FontSize="24" Margin="0,315,0,0" Text="" VerticalAlignment="Top" Width="220" SelectedDateChanged="EventTimeField_SelectedDateChanged"/>
+            <Label Content="Event Location Id" HorizontalAlignment="Left" Margin="238,289,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="EventLocationIdField" HorizontalAlignment="Left" FontSize="24" Margin="238,315,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220" TextChanged="EventLocationIdField_TextChanged" Height="40"/>
+            <Label Content="Location Preparation" HorizontalAlignment="Left" Margin="0,359,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="EventLocationPrepField" HorizontalAlignment="Center" FontSize="24" Margin="0,385,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="100" Width="458" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+            <Label Content="Description" HorizontalAlignment="Left" Margin="0,490,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="EventDescrpitionField" HorizontalAlignment="Center" FontSize="24" Margin="0,516,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="100" Width="458" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+            <Label Content="Event Plan" HorizontalAlignment="Left" Margin="-1,621,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="EventPlanField" HorizontalAlignment="Center" FontSize="24" Margin="0,647,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="100" Width="458" ScrollViewer.VerticalScrollBarVisibility="Visible" />
+            <Label Content="Price" HorizontalAlignment="Left" Margin="116,752,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="EventPriceField" HorizontalAlignment="Left" FontSize="24" Margin="116,778,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="101" TextChanged="EventPriceField_TextChanged"/>
+            <Label Content="Capacity" HorizontalAlignment="Left" Margin="248,752,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="EventCapacityField" HorizontalAlignment="Right" FontSize="24" Margin="0,778,110,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" TextChanged="EventCapacityField_TextChanged"/>
+            <Button x:Name="AddEventButton" Content="Add event" HorizontalAlignment="Left" Margin="116,847,0,0" VerticalAlignment="Top" Height="45" Width="232" Click="AddEventButton_Click"/>
+        </Grid>
+        <ListView x:Name="LocationData" ItemsSource="{Binding Locations}" FontSize="16" HorizontalAlignment="Left" Width="626" Margin="1136,326,0,265">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding locationId}" />
+                    <GridViewColumn Header="Address" DisplayMemberBinding="{Binding address}" />
+                    <GridViewColumn Header="City" DisplayMemberBinding="{Binding city}" />
+                    <GridViewColumn Header="Country" DisplayMemberBinding="{Binding country}" />
+                    <GridViewColumn Header="Location Type" DisplayMemberBinding="{Binding locationType}" />
+                    <GridViewColumn Header="Capacity" DisplayMemberBinding="{Binding maxCapacity}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBlock HorizontalAlignment="Left" Margin="1136,289,0,0" TextWrapping="Wrap" FontSize="24" Text="All locations" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

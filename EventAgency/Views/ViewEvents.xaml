@@ -1,0 +1,138 @@
+﻿<Window x:Class="EventAgency.Views.ViewEvents"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EventAgency.Views"
+        mc:Ignorable="d"
+        Title="ViewEvents" Height="1080" Width="1920" WindowState="Maximized">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="48" Text="Events" Margin="0,100,0,0"/>
+            <ListView x:Name="EventData" ItemsSource="{Binding Events}" FontSize="16" HorizontalAlignment="Left" Width="362" Margin="10,210,0,29" SelectionChanged="EventData_SelectionChanged">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="ID" DisplayMemberBinding="{Binding eventId}" />
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding eventName}" />
+                        <GridViewColumn Header="Type" DisplayMemberBinding="{Binding eventType}" />
+                        <GridViewColumn Header="Date" DisplayMemberBinding="{Binding eventTime}" />
+                        <GridViewColumn Header="Price" DisplayMemberBinding="{Binding price}" />
+                        <GridViewColumn Header="Capacity" DisplayMemberBinding="{Binding capacity}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Grid HorizontalAlignment="Left" Margin="428,-69,0,38">
+                <Label Content="Event Name" HorizontalAlignment="Left" Margin="0,215,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="EventNameField" HorizontalAlignment="Center" FontSize="24" Margin="0,240,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220"/>
+                <Label Content="Event Type" HorizontalAlignment="Left" Margin="0,275,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="EventTypeField" HorizontalAlignment="Center" FontSize="24" Margin="0,300,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220"/>
+                <Label Content="Event Time" HorizontalAlignment="Left" Margin="0,335,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="EventTimeField" HorizontalAlignment="Center" FontSize="24" Margin="0,360,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220"/>
+                <Label Content="Event Location Id" HorizontalAlignment="Left" Margin="0,395,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="EventLocationIdField" HorizontalAlignment="Center" FontSize="24" Margin="0,420,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220"/>
+                <Label Content="Location Preparation" HorizontalAlignment="Left" Margin="0,455,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="EventLocationPrepField" HorizontalAlignment="Center" FontSize="24" Margin="0,480,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="100" Width="220" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+                <Label Content="Description" HorizontalAlignment="Left" Margin="0,585,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="EventDescrpitionField" HorizontalAlignment="Center" FontSize="24" Margin="0,610,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="100" Width="220" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+                <Label Content="Event Plan" HorizontalAlignment="Left" Margin="0,715,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="EventPlanField" HorizontalAlignment="Center" FontSize="24" Margin="0,740,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="100" Width="220" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+                <Label Content="Price" HorizontalAlignment="Left" Margin="0,844,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="EventPriceField" HorizontalAlignment="Left" FontSize="24" Margin="0,870,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="101"/>
+                <Label Content="Capacity" HorizontalAlignment="Left" Margin="120,844,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="EventCapacityField" HorizontalAlignment="Right" FontSize="24" Margin="0,870,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100"/>
+                <Button x:Name="UpdateEventButton" Content="Update" HorizontalAlignment="Left" Margin="0,982,0,0" VerticalAlignment="Top" Height="45" Width="101" Click="UpdateEventButton_Click"/>
+                <TextBox x:Name="EventStateField" HorizontalAlignment="Left" FontSize="24" Margin="0,932,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="101"/>
+                <Label Content="State" HorizontalAlignment="Left" Margin="0,906,0,0" VerticalAlignment="Top"/>
+                <Button x:Name="DeleteEventButton" Content="Delete" HorizontalAlignment="Left" Margin="120,982,0,0" VerticalAlignment="Top" Height="45" Width="100" Click="DeleteEventButton_Click"/>
+                <Button x:Name="ChangeEventState" Content="Change State" HorizontalAlignment="Left" Height="34" Margin="120,932,0,0" VerticalAlignment="Top" Width="100" Click="ChangeEventState_Click"/>
+            </Grid>
+            <Button x:Name="AddEventButton" Content="+ Add new" Command="{Binding ShowAddEventWindowCommand}" HorizontalAlignment="Left" Margin="262,160,0,0" VerticalAlignment="Top" Height="45" Width="110"/>
+
+            <ListView x:Name="GuestData" FontSize="16" HorizontalAlignment="Left" Width="511" Margin="1347,204,0,650">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="ID" DisplayMemberBinding="{Binding guestId}" />
+                        <GridViewColumn Header="First Name" DisplayMemberBinding="{Binding firstName}" />
+                        <GridViewColumn Header="Last Name" DisplayMemberBinding="{Binding lastName}" />
+                        <GridViewColumn Header="Age" DisplayMemberBinding="{Binding age}" />
+                        <GridViewColumn Header="Phone Num" DisplayMemberBinding="{Binding phoneNum}" />
+                        <GridViewColumn Header="Email" DisplayMemberBinding="{Binding email}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <TextBlock x:Name="GuestIdField" HorizontalAlignment="Left" Margin="787,447,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="30" Width="50"/>
+            <TextBlock x:Name="GuestFNField" HorizontalAlignment="Left" Margin="842,447,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="30" Width="170"/>
+            <TextBlock x:Name="GuestLNField" HorizontalAlignment="Left" Margin="1017,447,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="30" Width="170"/>
+            <Label Content="ID" HorizontalAlignment="Left" Margin="787,420,0,0" VerticalAlignment="Top" Width="50"/>
+            <Label Content="First Name" HorizontalAlignment="Left" Margin="842,420,0,0" VerticalAlignment="Top" Width="73"/>
+            <Label Content="Last Name" HorizontalAlignment="Left" Margin="1017,419,0,0" VerticalAlignment="Top" Width="70"/>
+            <Label Content="All Guests" HorizontalAlignment="Left" FontSize="24" Margin="785,164,0,0" VerticalAlignment="Top"/>
+            <ListView x:Name="AllGuestData" ItemsSource="{Binding Guests}"  FontSize="16" HorizontalAlignment="Left" Width="511" Margin="785,204,0,649" SelectionChanged="GuestData_SelectionChanged">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="ID" DisplayMemberBinding="{Binding guestId}" />
+                        <GridViewColumn Header="First Name" DisplayMemberBinding="{Binding firstName}" />
+                        <GridViewColumn Header="Last Name" DisplayMemberBinding="{Binding lastName}" />
+                        <GridViewColumn Header="Age" DisplayMemberBinding="{Binding age}" />
+                        <GridViewColumn Header="Phone Num" DisplayMemberBinding="{Binding phoneNum}" />
+                        <GridViewColumn Header="Email" DisplayMemberBinding="{Binding email}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Button Content="Add new / Update guest" Command="{Binding ShowGuestWindowCommand}" HorizontalAlignment="Left" Margin="1494,425,0,0" VerticalAlignment="Top" Height="45" Width="220"/>
+
+            <ListView x:Name="ParticipantData" FontSize="16" HorizontalAlignment="Left" Width="510" Margin="1347,585,0,224">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="ID" DisplayMemberBinding="{Binding participantId}" />
+                        <GridViewColumn Header="First Name" DisplayMemberBinding="{Binding firstName}" />
+                        <GridViewColumn Header="Last Name" DisplayMemberBinding="{Binding lastName}" />
+                        <GridViewColumn Header="Speciality" DisplayMemberBinding="{Binding speciality}" />
+                        <GridViewColumn Header="Phone Num" DisplayMemberBinding="{Binding phoneNum}" />
+                        <GridViewColumn Header="Email" DisplayMemberBinding="{Binding email}" />
+                        <GridViewColumn Header="Work Price" DisplayMemberBinding="{Binding perHourPrice}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <TextBlock x:Name="ParticipantIdField" HorizontalAlignment="Left" Margin="783,872,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="30" Width="50"/>
+            <TextBlock x:Name="ParticipantFNField" HorizontalAlignment="Left" Margin="839,872,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="30" Width="170"/>
+            <TextBlock x:Name="ParticipantLNField" HorizontalAlignment="Left" Margin="1014,872,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="30" Width="170"/>
+            <Label Content="ID" HorizontalAlignment="Left" Margin="783,847,0,0" VerticalAlignment="Top" Width="50"/>
+            <Label Content="First Name" HorizontalAlignment="Left" Margin="839,845,0,0" VerticalAlignment="Top" Width="73"/>
+            <Label Content="Last Name" HorizontalAlignment="Left" Margin="1014,844,0,0" VerticalAlignment="Top" Width="70"/>
+            <Label Content="All Participants" HorizontalAlignment="Left" FontSize="24" Margin="783,543,0,0" VerticalAlignment="Top"/>
+            <ListView x:Name="AllParticipantData" ItemsSource="{Binding Participants}" FontSize="16" HorizontalAlignment="Left" Width="510" Margin="783,585,0,224" SelectionChanged="ParticipantData_SelectionChanged">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="ID" DisplayMemberBinding="{Binding participantId}" />
+                        <GridViewColumn Header="First Name" DisplayMemberBinding="{Binding firstName}" />
+                        <GridViewColumn Header="Last Name" DisplayMemberBinding="{Binding lastName}" />
+                        <GridViewColumn Header="Speciality" DisplayMemberBinding="{Binding speciality}" />
+                        <GridViewColumn Header="Phone Num" DisplayMemberBinding="{Binding phoneNum}" />
+                        <GridViewColumn Header="Email" DisplayMemberBinding="{Binding email}" />
+                        <GridViewColumn Header="Work Price" DisplayMemberBinding="{Binding perHourPrice}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Button Content="Add new / Update participant" Command="{Binding ShowParticipantWindowCommand}" HorizontalAlignment="Left" Margin="1494,850,0,0" VerticalAlignment="Top" Height="45" Width="220"/>
+            <Button Content="Assign guest" HorizontalAlignment="Left" Margin="990,487,0,0" VerticalAlignment="Top" Height="45" Width="110" Click="AssignGuest_Click"/>
+            <Button Content="Assign participant" HorizontalAlignment="Left" Margin="990,907,0,0" VerticalAlignment="Top" Height="44" Width="110" Click="AssignParticipant_Click"/>
+            <TextBox x:Name="GuestStatusField" HorizontalAlignment="Left" Margin="1192,445,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="104" Height="33"/>
+            <TextBox x:Name="WorkHoursField" HorizontalAlignment="Left" Margin="1189,870,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="104" Height="32"/>
+            <Label Content="Work Hours" HorizontalAlignment="Left" Margin="1189,845,0,0" VerticalAlignment="Top" Width="77" Height="25"/>
+            <Label Content="Guest Status" HorizontalAlignment="Left" Margin="1192,419,0,0" VerticalAlignment="Top" Width="77"/>
+            <CheckBox x:Name="FloristCheck" Content="Add florist" HorizontalAlignment="Left" Height="19" Margin="667,223,0,0" VerticalAlignment="Top" Width="77"/>
+            <CheckBox x:Name="DeliveryCheck" Content="Add delivery" HorizontalAlignment="Left" Height="19" Margin="667,242,0,0" VerticalAlignment="Top" Width="88"/>
+            <ComboBox x:Name="IteratorChoice" HorizontalAlignment="Left" Height="45" Margin="10,160,0,0" VerticalAlignment="Top" Width="140" SelectionChanged="IteratorChoice_SelectionChanged">
+                <TextBlock Text="Standard"/>
+                <TextBlock Text="Sort by date"/>
+            </ComboBox>
+        </Grid>
+    </Grid>
+</Window>

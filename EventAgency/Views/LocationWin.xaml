@@ -1,0 +1,40 @@
+﻿<Window x:Class="EventAgency.Views.LocationWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EventAgency.Views"
+        mc:Ignorable="d"
+        Title="LocationWin" Height="1080" Width="1920">
+    <Grid>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="48" Text="Locations" Margin="0,100,0,0"/>
+        <Grid HorizontalAlignment="Left" Margin="508,34,0,34">
+            <Label Content="Address" HorizontalAlignment="Left" Margin="0,215,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="addressField" HorizontalAlignment="Center" FontSize="24" Margin="0,240,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220"/>
+            <Label Content="City" HorizontalAlignment="Left" Margin="0,275,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="cityField" HorizontalAlignment="Center" FontSize="24" Margin="0,300,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220"/>
+            <Label Content="Country" HorizontalAlignment="Left" Margin="0,335,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="countryField" HorizontalAlignment="Center" FontSize="24" Margin="0,360,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220"/>
+            <Label Content="Location Type" HorizontalAlignment="Left" Margin="0,395,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="locationTypeField" HorizontalAlignment="Center" FontSize="24" Margin="0,420,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220"/>
+            <Label Content="People Capacity" HorizontalAlignment="Left" Margin="0,455,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="maxCapacityField" HorizontalAlignment="Center" FontSize="24" Margin="0,480,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220"/>
+            
+            <Button x:Name="UpdateLocationButton" Content="Update" HorizontalAlignment="Left" Margin="0,658,0,0" VerticalAlignment="Top" Height="45" Width="105" Click="UpdateLocationButton_Click"/>
+            <Button x:Name="DeleteLocationButton" Content="Delete" HorizontalAlignment="Left" Margin="110,658,0,0" VerticalAlignment="Top" Height="45" Width="110" Click="DeleteLocationButton_Click"/>
+            <Button x:Name="AddLocationButton" Content="Add" HorizontalAlignment="Center" Margin="0,608,0,0" VerticalAlignment="Top" Height="45" Width="220" Click="AddLocationButton_Click"/>
+        </Grid>
+        <ListView x:Name="LocationData" ItemsSource="{Binding Locations}"  FontSize="16" HorizontalAlignment="Left" Width="511" Margin="1142,173,0,173" SelectionChanged="LocationData_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding locationId}" />
+                    <GridViewColumn Header="Address" DisplayMemberBinding="{Binding address}" />
+                    <GridViewColumn Header="City" DisplayMemberBinding="{Binding city}" />
+                    <GridViewColumn Header="Country" DisplayMemberBinding="{Binding country}" />
+                    <GridViewColumn Header="Location type" DisplayMemberBinding="{Binding locationType}" />
+                    <GridViewColumn Header="Max People" DisplayMemberBinding="{Binding maxCapacity}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
